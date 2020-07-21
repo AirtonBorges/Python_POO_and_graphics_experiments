@@ -123,7 +123,7 @@ class Branch:
         if len(Tree.branches) >= 30:
             color = colors[1]
 
-        angle = 20
+        angle = 30
 
         new_branchr = Line(b.branch.end,
                            size=b.branch.size * 0.67,
@@ -161,12 +161,16 @@ while True:
     # at exactly 0 degrees, causes a bug that don't let new branches be generated on them.
     # I'll revisit this and try to fix it.
     # Seems to see something with the way I'm calculating and/or drawing angles.
+    # It looks like the bug stopped magically. wtf?
+    # Not really, if yo draw the first line at 0 degrees left, the bug still occurs. Such
+    # A weird bug.
+
     try:
         branch = Tree.branches[Tree.size]
         branch.add_branch()
 
     except Exception as e:
-        print(e.__cause__)
+        print(e)
         print(f"Tree end{Tree.branches[-1].branch.end}")
 
     draw_line(branch.branch)
