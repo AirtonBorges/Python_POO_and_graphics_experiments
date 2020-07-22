@@ -28,6 +28,9 @@ class Line:
         self.beginning = beg
         self.end = _end
         self.angle = angle
+        if angle == 0:
+            self.angle = 360
+
         self.size = size
         self.stroke = stroke
         self.color = color
@@ -164,6 +167,7 @@ while True:
     # It looks like the bug stopped magically. wtf?
     # Not really, if yo draw the first line at 0 degrees left, the bug still occurs. Such
     # A weird bug.
+    # Got it. There's no 0 degrees. It's just 360.
 
     try:
         branch = Tree.branches[Tree.size]
