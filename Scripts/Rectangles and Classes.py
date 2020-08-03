@@ -47,7 +47,7 @@ def getlosasquares(number):  # get randomly generated squares
         random_square = Square(
             color=(randint(0, 255), randint(0, 255), randint(0, 255)),
             x=randint(- 20, win.get_width()), y=randint(- 20, win.get_height()),
-            height=randint(1, 5), width=randint(1, 500))
+            height=randint(1, 1), width=randint(1, 1))
 
         lotsasquares.append(random_square)
 
@@ -57,15 +57,13 @@ def getlosasquares(number):  # get randomly generated squares
 # Drawing stuff
 run = True
 while run:
-    pygame.time.delay(1)
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
 
-    square = cicle(getlosasquares(1))
-
-    pygame.draw.rect(win, square.color, (square.x, square.y, square.height, square.width))
+    square = cicle(getlosasquares(1000))
+    for i in range(1000):
+        pygame.draw.rect(win, square.color, (square.x, square.y, square.height, square.width))
     pygame.display.update()
 
 pygame.quit()

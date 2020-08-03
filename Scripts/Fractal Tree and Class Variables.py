@@ -27,6 +27,7 @@ class Line:
     def __init__(self, beg: Point, _end: Point = None, angle=None, size=None, stroke=1, color='black'):
         self.beginning = beg
         self.end = _end
+
         self.angle = angle
         if angle == 0:
             self.angle = 360
@@ -160,15 +161,15 @@ Tree.branches.append(Branch(Line(beginning, stroke=10, size=200, color='brown', 
 # Finally draw the tree, adding two new branches to each branch on the tree.
 while True:
     branch = None
+
     # Have to put this here because of a weird bug. Every line facing right
     # at exactly 0 degrees, causes a bug that don't let new branches be generated on them.
     # I'll revisit this and try to fix it.
     # Seems to see something with the way I'm calculating and/or drawing angles.
     # It looks like the bug stopped magically. wtf?
-    # Not really, if yo draw the first line at 0 degrees left, the bug still occurs. Such
+    # Not really, if you draw the first line at 0 degrees left, the bug still occurs. Such
     # A weird bug.
     # Got it. There's no 0 degrees. It's just 360.
-
     try:
         branch = Tree.branches[Tree.size]
         branch.add_branch()
